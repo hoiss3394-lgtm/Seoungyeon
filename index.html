@@ -3,19 +3,33 @@
 <section id="player" class="card"><div class="row" style="justify-content:space-between"><span class="pill" id="ticketId">TICKET 01</span><span class="pill" id="phase">추첨 대기</span></div><h2>나의 로또 번호</h2><div class="label">A · AUTO</div><div id="auto" class="ballrow"></div><div class="label">B · MANUAL</div><div id="manual" class="ballrow"></div><div id="result" class="hide"><hr style="border:0;border-top:1px solid #eee"><div class="label">DRAW NUMBERS</div><div id="draw" class="ballrow"></div><div id="scores"></div></div><p class="muted small">수동 번호는 추첨 전에 진행자에게 제출해야 합니다. QR은 본인 티켓 조회용이며 개인 정보는 저장하지 않습니다.</p></section>
 <section id="landing" class="card hide"><h2>내 티켓 확인</h2><p class="muted">복권 QR을 스캔하거나 티켓 번호를 입력해 주세요.</p><div class="row"><input id="lookup" type="number" min="1" max="20" class="field" placeholder="01"><button id="go" class="btn">확인</button></div></section>
 <section id="admin" class="hide"><div class="card"><h2>진행자 관리자</h2><p class="muted small">관리자 계정으로만 추첨 데이터를 수정할 수 있습니다.</p><div id="loginBox"><input id="email" type="email" class="field" placeholder="관리자 이메일"><input id="password" type="password" class="field" placeholder="비밀번호"><button id="login" class="btn">로그인</button></div><div id="logged" class="hide"><div class="row"><span class="success">관리자 로그인됨</span><button id="logout" class="btn btn2">로그아웃</button></div><h2>수동 번호 등록</h2><p class="muted small">각 티켓별로 1~20에서 서로 다른 숫자 6개를 입력. 추첨 전 저장하세요.</p><select id="manualTicket" class="field"></select><div id="manualInputs" class="numgrid" style="margin:12px 0"></div><button id="saveManual" class="btn">수동 번호 저장</button><h2>추첨 번호 입력</h2><div id="drawInputs" class="numgrid"></div><div class="row" style="margin-top:12px"><button id="publish" class="btn">최종 결과 게시</button><button id="reset" class="btn btn2">추첨 결과 초기화</button></div><p class="notice">최종 순위: 최고 일치 수 → 합산 일치 수 → 동점자 무작위 순서. 1·2등 각 1명, 3등 2명, 4·5등 각 3명. 게시 전 모든 수동 번호 등록 필수.</p><h2>등록 및 순위</h2><div id="adminTable"></div></div><p id="adminMsg" class="small"></p></div></section><footer>CAE LOTTO · HANKOOK · 20 PLAYERS</footer></main>
+<script>
+// Runs independently of Firebase imports: always show the correct page.
+(function(){
+  const admin = new URLSearchParams(location.search).has('admin');
+  const ticket = Number(new URLSearchParams(location.search).get('ticket'));
+  document.getElementById('admin').classList.toggle('hide', !admin);
+  document.getElementById('player').classList.toggle('hide', admin || !(ticket>=1 && ticket<=20));
+  document.getElementById('landing').classList.toggle('hide', admin || (ticket>=1 && ticket<=20));
+  const status = document.getElementById('status');
+  status.textContent = 'Firebase 연결 중…';
+  window.addEventListener('error', function(e){
+    status.textContent='사이트 스크립트 오류: '+(e.message||'Firebase 모듈을 불러오지 못했습니다.');
+  });
+  window.addEventListener('unhandledrejection', function(e){
+    status.textContent='Firebase 연결 오류: '+(e.reason?.message||String(e.reason));
+  });
+  setTimeout(function(){
+    if(status.textContent==='Firebase 연결 중…') status.textContent='Firebase 스크립트 실행이 지연되거나 차단되었습니다. 브라우저 또는 네트워크를 확인해 주세요.';
+  }, 8000);
+})();
+</script>
 <script type="module">
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import {getFirestore,doc,onSnapshot,getDoc,setDoc} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 // Firebase Console > Project settings > Your apps > Web app에서 받은 설정으로 교체
-const const firebaseConfig = {
-  apiKey: "AIzaSyA-DPx2fFg949QYuufgZgVbLDFMJ2ID00c",
-  authDomain: "cae-lotto.firebaseapp.com",
-  projectId: "cae-lotto",
-  storageBucket: "cae-lotto.firebasestorage.app",
-  messagingSenderId: "551776698809",
-  appId: "1:551776698809:web:97d81546bd05c39f41f668"
-};
+const firebaseConfig={apiKey:'AIzaSyA-DPx2fFg949QYuufgZgVbLDFMJ2ID00c',authDomain:'cae-lotto.firebaseapp.com',projectId:'cae-lotto',storageBucket:'cae-lotto.firebasestorage.app',messagingSenderId:'551776698809',appId:'1:551776698809:web:97d81546bd05c39f41f668'};
 const T=[[3,5,6,8,16,20],[3,4,6,10,12,18],[2,10,11,12,14,19],[1,2,3,4,7,18],[5,7,9,11,12,19],[8,10,12,16,19,20],[7,8,9,16,18,19],[3,5,8,13,15,16],[2,4,14,15,17,20],[2,3,6,14,17,20],[1,4,10,13,17,18],[5,6,9,11,13,15],[1,5,7,9,11,20],[1,2,5,6,7,16],[4,9,10,12,13,17],[2,11,13,14,18,19],[1,8,11,15,18,20],[10,12,13,15,17,19],[1,3,6,14,15,17],[4,7,8,9,14,16]];
 const $=id=>document.getElementById(id), params=new URLSearchParams(location.search), ticket=Number(params.get('ticket')), isAdmin=params.has('admin');
 const valid=a=>Array.isArray(a)&&a.length===6&&a.every(x=>Number.isInteger(x)&&x>=1&&x<=20)&&new Set(a).size===6;
