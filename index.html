@@ -32,7 +32,7 @@
 @media print{
  html,body{margin:0!important;padding:0!important;background:white!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
  .wrap{max-width:none!important;margin:0!important;padding:0!important}
- .top,h1,.sub,#status,#admin>.card,footer,#printCard>h2{display:none!important}
+ .top,h1,.sub,#status,#admin>.card:not(#printCard),footer,#printCard>h2{display:none!important}
  #admin,#printCard{display:block!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important}
  .qrgrid{display:block!important}
  .qrcard{width:190mm!important;height:131mm!important;break-inside:avoid!important;page-break-inside:avoid!important;margin:0 0 10mm!important;border:1.5px solid #142437!important;border-radius:2.5mm!important;box-shadow:none!important}
@@ -70,7 +70,7 @@
 @media print{
  html,body{background:#fff!important;margin:0!important;padding:0!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
  .wrap{max-width:none!important;padding:0!important;margin:0!important}
- .top,h1,.sub,#status,#admin>.card,footer,#printCard>h2{display:none!important}
+ .top,h1,.sub,#status,#admin>.card:not(#printCard),footer,#printCard>h2{display:none!important}
  #admin,#printCard{display:block!important;padding:0!important;margin:0!important;border:0!important;box-shadow:none!important}
  .qrgrid{display:grid!important;grid-template-columns:90mm 90mm!important;column-gap:10mm!important;row-gap:9mm!important;width:190mm!important;align-content:start!important}
  .receipt-ticket{width:90mm!important;height:132mm!important;padding:3.8mm!important;border:.3mm dashed #a7a7a7!important;border-radius:0!important;box-shadow:none!important;break-inside:avoid!important;page-break-inside:avoid!important}
