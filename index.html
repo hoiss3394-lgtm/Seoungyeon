@@ -1,5 +1,90 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CAE LOTTO | HANKOOK</title><style>
-:root{font-family:system-ui,'Noto Sans KR',sans-serif;color:#17202b;background:#f5f6f8}*{box-sizing:border-box}body{margin:0}.wrap{max-width:740px;margin:auto;padding:22px 16px 65px}.top{display:flex;justify-content:space-between;font-weight:800;font-size:12px;letter-spacing:.06em}.orange{color:#ec681d}h1{font-size:44px;letter-spacing:-.05em;margin:26px 0 0}h2{font-size:19px;margin:24px 0 12px}h3{margin:20px 0 10px}.muted{color:#687582}.small{font-size:13px}.card{background:white;border:1px solid #e5e8ed;border-radius:20px;padding:22px;margin:16px 0;box-shadow:0 4px 16px #17202b08}.pill{display:inline-block;border-radius:20px;padding:7px 12px;background:#f2f4f6;font-size:12px;font-weight:800}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.spread{justify-content:space-between}.ballrow{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 18px}.ball{display:grid;place-items:center;width:43px;height:43px;border-radius:50%;background:#eef1f4;font-weight:800}.ball.hit{background:#f47b35;color:white}.label{font-size:12px;font-weight:800;color:#7d8790;letter-spacing:.07em}.field{border:1px solid #cbd1d7;border-radius:9px;padding:12px;font-size:16px;max-width:100%}.namefield{width:100%}.numgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.numgrid input{width:100%;min-width:0;text-align:center;padding:10px 0}.btn{border:0;background:#e9651b;color:white;border-radius:11px;padding:12px 15px;font-weight:800;cursor:pointer}.btn2{background:#273441}.btn3{background:#f0f1f3;color:#273441}.btn:disabled{opacity:.45;cursor:not-allowed}.hide{display:none!important}.notice{background:#fff2e8;padding:13px;border-radius:11px;font-size:13px;margin:14px 0}.error{color:#b42318}.success{color:#16764d}.big{font-size:35px;font-weight:900;margin:8px 0}table{width:100%;border-collapse:collapse;font-size:13px}td,th{border-bottom:1px solid #e8eaed;padding:9px 5px;text-align:left}th{color:#687582}a{color:#d65a14}hr{border:0;border-top:1px solid #eee;margin:20px 0}.qrgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.qrcard{border:1px solid #d8dde4;border-radius:12px;padding:12px;text-align:center;break-inside:avoid}.qrcard img{width:145px;height:145px;max-width:100%}.qrcard p{margin:4px 0;font-size:11px}.qrcard strong{font-size:17px}footer{text-align:center;color:#87909b;font-size:12px;margin-top:35px}@media(max-width:450px){.qrgrid{grid-template-columns:repeat(2,1fr)}.card{padding:18px}}@media print{body{background:white}.top,h1,.sub,#status,#admin .card:not(#printCard),footer,.noprint{display:none!important}#admin,#printCard{display:block!important}#printCard{border:0;box-shadow:none;padding:0}.qrgrid{grid-template-columns:repeat(4,1fr);gap:8px}.qrcard{padding:6px}.qrcard img{width:125px;height:125px}}
+:root{font-family:system-ui,'Noto Sans KR',sans-serif;color:#17202b;background:#f5f6f8}*{box-sizing:border-box}body{margin:0}.wrap{max-width:740px;margin:auto;padding:22px 16px 65px}.top{display:flex;justify-content:space-between;font-weight:800;font-size:12px;letter-spacing:.06em}.orange{color:#ec681d}h1{font-size:44px;letter-spacing:-.05em;margin:26px 0 0}h2{font-size:19px;margin:24px 0 12px}h3{margin:20px 0 10px}.muted{color:#687582}.small{font-size:13px}.card{background:white;border:1px solid #e5e8ed;border-radius:20px;padding:22px;margin:16px 0;box-shadow:0 4px 16px #17202b08}.pill{display:inline-block;border-radius:20px;padding:7px 12px;background:#f2f4f6;font-size:12px;font-weight:800}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.spread{justify-content:space-between}.ballrow{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 18px}.ball{display:grid;place-items:center;width:43px;height:43px;border-radius:50%;background:#eef1f4;font-weight:800}.ball.hit{background:#f47b35;color:white}.label{font-size:12px;font-weight:800;color:#7d8790;letter-spacing:.07em}.field{border:1px solid #cbd1d7;border-radius:9px;padding:12px;font-size:16px;max-width:100%}.namefield{width:100%}.numgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.numgrid input{width:100%;min-width:0;text-align:center;padding:10px 0}.btn{border:0;background:#e9651b;color:white;border-radius:11px;padding:12px 15px;font-weight:800;cursor:pointer}.btn2{background:#273441}.btn3{background:#f0f1f3;color:#273441}.btn:disabled{opacity:.45;cursor:not-allowed}.hide{display:none!important}.notice{background:#fff2e8;padding:13px;border-radius:11px;font-size:13px;margin:14px 0}.error{color:#b42318}.success{color:#16764d}.big{font-size:35px;font-weight:900;margin:8px 0}table{width:100%;border-collapse:collapse;font-size:13px}td,th{border-bottom:1px solid #e8eaed;padding:9px 5px;text-align:left}th{color:#687582}a{color:#d65a14}hr{border:0;border-top:1px solid #eee;margin:20px 0}
+/* LARGE REAL-LOTTERY-STYLE CAE LOTTO TICKETS */
+.qrgrid{display:grid;grid-template-columns:1fr;gap:18px}
+.qrcard{background:#fff;border:2px solid #17212e;border-radius:15px;overflow:hidden;break-inside:avoid;box-shadow:0 5px 20px #15253615;color:#15212d}
+.lotto-top{display:flex;justify-content:space-between;align-items:center;background:#142437;color:#fff;padding:16px 20px;border-bottom:5px solid #f57426}
+.lotto-logo small{font-size:9px;font-weight:800;letter-spacing:.1em;color:#c4cfdb}
+.lotto-logo>div{font-size:35px;line-height:1.08;font-weight:1000;letter-spacing:-.065em}
+.lotto-logo em{font-style:normal;color:#ff873c}.lotto-logo .dot{color:#ff873c}
+.ticket-id{text-align:right;display:flex;flex-direction:column;gap:4px}.ticket-id span{font-size:9px;letter-spacing:.06em;color:#bec9d5}.ticket-id b{font-size:23px;letter-spacing:.04em}
+.lotto-meta{display:flex;justify-content:space-between;align-items:center;padding:8px 19px;background:#fff1e7;border-bottom:1px solid #f3d4be;font-size:11px;font-weight:800;color:#915027}
+.lotto-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:13px;padding:17px 16px 18px;align-items:stretch}
+.game-area{min-width:0;border:1.5px solid #d6dce3;border-radius:11px;overflow:hidden;background:#fff}
+.game-title{display:flex;align-items:center;gap:8px;padding:9px 9px;background:#f2f5f8;min-height:60px}
+.letter{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;border-radius:50%;background:#f57426;color:#fff;font-size:19px}
+.game-title strong{font-size:14px;white-space:nowrap}.game-title strong small{font-size:9px;color:#74808e}.game-title p{font-size:9px;margin:2px 0 0;color:#687582}
+.sixnums{display:none}
+.numbermatrix{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;padding:12px 10px 13px}
+.picknum{display:grid;place-items:center;width:100%;aspect-ratio:1;border:1.3px solid #bfc8d2;border-radius:50%;font-size:13px;font-weight:800;color:#415062}
+.picknum.chosen{background:#f57426;border-color:#f57426;color:white;box-shadow:0 0 0 2px #fce4d5}
+.manual-area .letter{background:#237e9d}.manual-area .game-title{background:#eaf5f8}
+.ticket-aside{display:flex;align-items:center;flex-direction:column;justify-content:flex-start;border-left:1px dashed #bdc7d1;padding-left:13px;text-align:center}
+.qrframe{background:#fff;border:1.5px solid #e0e5ea;border-radius:9px;padding:5px;max-width:100%}
+.qrhere{width:140px;height:140px;display:flex;align-items:center;justify-content:center}
+.qrhere img,.qrhere canvas{width:140px!important;height:140px!important;max-width:100%}
+.ticket-aside>strong{font-size:14px;color:#e9651b;margin-top:7px;letter-spacing:.08em}
+.ticket-aside>p{font-size:10px;line-height:1.55;color:#475569;margin:3px 0 9px}
+.name-box{width:100%;border-top:1px solid #e0e5ea;padding-top:10px;text-align:left;font-size:11px;font-weight:800;white-space:nowrap}
+.name-box span{color:#8895a3}.qr-note{font-size:9px;color:#7c8793;line-height:1.5;margin-top:8px}
+.lotto-bottom{display:flex;justify-content:space-between;background:#edf1f4;padding:9px 18px;font-size:10px;font-weight:900;color:#536171;letter-spacing:.08em}
+@page{size:A4 portrait;margin:10mm}
+@media print{
+ html,body{margin:0!important;padding:0!important;background:white!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+ .wrap{max-width:none!important;margin:0!important;padding:0!important}
+ .top,h1,.sub,#status,#admin>.card,footer,#printCard>h2{display:none!important}
+ #admin,#printCard{display:block!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important}
+ .qrgrid{display:block!important}
+ .qrcard{width:190mm!important;height:131mm!important;break-inside:avoid!important;page-break-inside:avoid!important;margin:0 0 10mm!important;border:1.5px solid #142437!important;border-radius:2.5mm!important;box-shadow:none!important}
+ .qrcard:nth-child(2n){margin-bottom:0!important;page-break-after:always!important;break-after:page!important}
+ .lotto-top{padding:4mm 5mm!important;height:25mm!important}
+ .lotto-logo small{font-size:7pt!important}.lotto-logo>div{font-size:26pt!important}.ticket-id span{font-size:7pt!important}.ticket-id b{font-size:17pt!important}
+ .lotto-meta{height:10mm!important;padding:1.8mm 5mm!important;font-size:8pt!important}
+ .lotto-main{grid-template-columns:1fr 1fr 37mm!important;gap:3mm!important;padding:4mm!important;height:87mm!important}
+ .game-title{padding:2mm!important;min-height:15mm!important;gap:2mm!important}
+ .letter{width:8mm!important;height:8mm!important;font-size:14pt!important}
+ .game-title strong{font-size:10pt!important}.game-title strong small{font-size:6.5pt!important}.game-title p{font-size:7pt!important}
+ .numbermatrix{gap:2mm!important;padding:3mm 2.5mm!important}
+ .picknum{font-size:10pt!important;border-width:1px!important}
+ .ticket-aside{padding-left:3mm!important}
+ .qrframe{padding:1.5mm!important}
+ .qrhere,.qrhere img,.qrhere canvas{width:30mm!important;height:30mm!important}
+ .ticket-aside>strong{font-size:10pt!important;margin-top:1.5mm!important}
+ .ticket-aside>p{font-size:7pt!important;margin:1mm 0 2mm!important}
+ .name-box{font-size:8pt!important;padding-top:2mm!important}.qr-note{font-size:6.5pt!important;margin-top:2mm!important}
+ .lotto-bottom{height:9mm!important;padding:2mm 5mm!important;font-size:7pt!important}
+}
+
+/* PRINTABLE RECEIPT LOTTO: 4 individual tickets on each A4 sheet */
+.qrgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.receipt-ticket{background:#fff;border:1px dashed #a6adb5;box-sizing:border-box;color:#111;overflow:hidden;padding:12px;font-family:'Noto Sans KR',Arial,sans-serif;break-inside:avoid}
+.receipt-head{display:flex;align-items:center;justify-content:space-between;font-size:11px;letter-spacing:.06em}.hankook-word{font-size:17px;font-style:italic;font-weight:1000;color:#111}.receipt-head span{font-weight:800;color:#666}
+.coffee-line{font-size:12px;font-weight:900;margin:12px 0 10px;white-space:nowrap}.coffee-line em{font-style:normal;color:#f16c1b}
+.receipt-hero{display:flex;align-items:center;justify-content:space-between;gap:8px}.receipt-title strong{display:block;font-size:17px;letter-spacing:-.07em;white-space:nowrap}.receipt-title b{display:block;font-size:48px;font-weight:1000;font-style:italic;letter-spacing:-.09em;line-height:1.12}
+.qr-shell{background:#fff;padding:3px;flex-shrink:0}.qrhere,.qrhere img,.qrhere canvas{width:94px!important;height:94px!important}
+.receipt-edition{display:flex;justify-content:center;align-items:center;gap:12px;margin:10px 0}.receipt-edition span{background:#ff751e;border-radius:30px;color:#fff;padding:4px 22px;font-weight:900}.receipt-edition b{font-size:11px}
+.receipt-dates{display:grid;gap:5px;font-size:12px}.receipt-dates>div{display:grid;grid-template-columns:75px 1fr;gap:5px}.receipt-dates b{letter-spacing:.05em}.receipt-dates span{font-weight:700}
+.receipt-rule{border-top:1.5px dashed #333;margin:12px 0}.receipt-numbers{display:grid;gap:10px}.receipt-number-row{display:grid;grid-template-columns:18px 33px repeat(6,minmax(0,1fr));gap:3px;align-items:center;text-align:center}.receipt-number-row .row-mark{color:#f36b1d;font-size:20px}.receipt-number-row .row-label{font-size:13px}.receipt-number-row strong{font-size:15px;font-weight:900;white-space:nowrap}.write-box{height:25px;border:1.5px solid #222;border-radius:3px;display:block}
+.receipt-instructions{font-size:10px;text-align:center;font-weight:700}.receipt-barcode{height:33px;margin:9px 15px 4px;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 8px,#111 8px 12px,#fff 12px 15px)}.receipt-foot{text-align:center;font-size:9px;color:#555;font-weight:700}
+@page{size:A4 portrait;margin:10mm}
+@media print{
+ html,body{background:#fff!important;margin:0!important;padding:0!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+ .wrap{max-width:none!important;padding:0!important;margin:0!important}
+ .top,h1,.sub,#status,#admin>.card,footer,#printCard>h2{display:none!important}
+ #admin,#printCard{display:block!important;padding:0!important;margin:0!important;border:0!important;box-shadow:none!important}
+ .qrgrid{display:grid!important;grid-template-columns:90mm 90mm!important;column-gap:10mm!important;row-gap:9mm!important;width:190mm!important;align-content:start!important}
+ .receipt-ticket{width:90mm!important;height:132mm!important;padding:3.8mm!important;border:.3mm dashed #a7a7a7!important;border-radius:0!important;box-shadow:none!important;break-inside:avoid!important;page-break-inside:avoid!important}
+ .receipt-ticket:nth-child(4n){break-after:page!important;page-break-after:always!important}
+ .receipt-head{font-size:7pt!important}.hankook-word{font-size:12pt!important}
+ .coffee-line{font-size:8pt!important;margin:3mm 0 2mm!important}
+ .receipt-title strong{font-size:12pt!important}.receipt-title b{font-size:34pt!important}
+ .qrhere,.qrhere img,.qrhere canvas{width:23mm!important;height:23mm!important}
+ .receipt-edition{margin:2mm 0!important;gap:2mm!important}.receipt-edition span{font-size:9pt!important;padding:1mm 5mm!important}.receipt-edition b{font-size:7pt!important}
+ .receipt-dates{font-size:8pt!important;gap:1mm!important}.receipt-dates>div{grid-template-columns:19mm 1fr!important}
+ .receipt-rule{margin:3mm 0!important}.receipt-numbers{gap:2.5mm!important}
+ .receipt-number-row{grid-template-columns:5mm 9mm repeat(6,minmax(0,1fr))!important;gap:.6mm!important}.receipt-number-row .row-mark{font-size:14pt!important}.receipt-number-row .row-label{font-size:8pt!important}.receipt-number-row strong{font-size:10pt!important}.write-box{height:6mm!important;border:1px solid #222!important}
+ .receipt-instructions{font-size:7pt!important}.receipt-barcode{height:8mm!important;margin:2mm 5mm 1mm!important}.receipt-foot{font-size:6pt!important}
+}
 </style></head><body><main class="wrap"><div class="top"><span>HANKOOK TIRE & TECHNOLOGY</span><span class="orange">CAE EVENT</span></div><h1>CAE <span class="orange">LOTTO.</span></h1><p class="muted sub">오늘의 커피 주인공은 누구?</p><div id="status" class="notice">Firebase 연결 중…</div>
 <section id="player" class="card hide"><div class="row spread"><span id="ticketId" class="pill">TICKET</span><span id="phase" class="pill">추첨 대기</span></div><h2>내 로또 번호</h2><div class="label">A · AUTO</div><div id="auto" class="ballrow"></div><div class="label">B · MANUAL</div><div id="manual" class="ballrow"></div><div id="entry"><hr><h3>내 번호 등록</h3><p class="muted small">본인 QR에서 이름과 1~20 중 중복 없는 숫자 6개를 입력하세요. 추첨 전까지만 등록할 수 있습니다.</p><label class="label" for="playerName">이름</label><input id="playerName" class="field namefield" maxlength="20" placeholder="이름 입력" autocomplete="name"><div class="label" style="margin:15px 0 7px">수동 번호 6개</div><div id="playerNums" class="numgrid"></div><div class="row" style="margin-top:13px"><button id="playerSave" class="btn">내 번호 저장</button><span id="playerMsg" class="small"></span></div><p class="muted small">QR 주소를 가진 사람은 해당 티켓 정보를 볼 수 있습니다. QR 링크는 다른 사람에게 공유하지 마세요. 처음 등록한 기기의 익명 계정으로 수정이 제한됩니다.</p></div><div id="result" class="hide"><hr><div class="label">DRAW NUMBERS</div><div id="draw" class="ballrow"></div><div id="scores"></div></div></section>
 <section id="landing" class="card hide"><h2>CAE LOTTO</h2><p>복권의 QR을 스캔하여 본인 티켓으로 접속해 주세요.</p><p class="muted small">기존의 번호만 포함된 QR은 직접 입력 기능을 지원하지 않습니다. 새 QR을 사용해 주세요.</p></section>
@@ -35,7 +120,28 @@ function ranking(draw){
 }
 function renderPlayer(){if(!playerRef)return;const id=current?.number||ticketNo;if(!(id>=1&&id<=20))return;$('ticketId').textContent='TICKET '+fmt(id);$('auto').innerHTML=balls(T[id-1],main.published?main.draw:[]);$('manual').innerHTML=valid(current?.manual)?balls(current.manual,main.published?main.draw:[]):'<span class="muted">미등록</span>';$('phase').textContent=main.published?'결과 발표':main.locked?'입력 마감':'등록 진행 중';$('entry').classList.toggle('hide',!!main.locked||!!main.published);$('result').classList.toggle('hide',!main.published);if(current){$('playerName').value=current.name||'';document.querySelectorAll('.playerNum').forEach((e,i)=>e.value=current.manual?.[i]||'');}if(main.published){$('draw').innerHTML=balls(main.draw);const r=ranking(main.draw).find(x=>x.id===id);const title=r.status==='winner'?'🎉 당첨!':r.status==='tie'?'동점자 · 현장 추가 추첨':'미당첨';$('scores').innerHTML=`<div class="big ${r.status==='winner'?'success':''}">${title}</div><p>${esc(r.name)} · 자동 ${r.auto}개 / 수동 ${r.manual}개 일치</p><p>최고 ${r.best}개 · 합산 ${r.sum}개</p>${r.status==='tie'?'<p class="notice">당첨권 10명 경계에서 동점입니다. 진행자의 현장 추가 추첨 결과를 따라주세요.</p>':''}`;}}
 function qrUrl(i,k){return location.origin+location.pathname+'?ticket='+fmt(i)+'&key='+encodeURIComponent(k);}
-function renderQr(){if(!config?.keys)return;$('printCard').classList.remove('hide');$('qrGrid').innerHTML=config.keys.map((k,i)=>{const url=qrUrl(i+1,k);return `<div class="qrcard"><strong>TICKET ${fmt(i+1)}</strong><div class="qrhere" data-url="${url}"></div><p>A · AUTO ${T[i].map(fmt).join(' · ')}</p><p>이름: __________________</p></div>`;}).join('');if(window.QRCode){document.querySelectorAll('.qrhere').forEach(el=>new QRCode(el,{text:el.dataset.url,width:145,height:145,correctLevel:QRCode.CorrectLevel.M}));}else{msg('adminMsg','QR 생성 라이브러리 로딩 실패: 인터넷 연결을 확인하세요.',true);}}
+function renderQr(){
+ if(!config?.keys)return;
+ $('printCard').classList.remove('hide');
+ $('qrGrid').innerHTML=config.keys.map((k,i)=>{
+  const url=qrUrl(i+1,k);
+  return `<article class="receipt-ticket">
+    <div class="receipt-head"><b class="hankook-word">◢ HANKOOK</b><span>CAE EVENT</span></div>
+    <div class="coffee-line">☕ 오늘의 <em>커피내기</em> 행운의 주인공은?</div>
+    <div class="receipt-hero"><div class="receipt-title"><strong>해석기술연구팀</strong><b>Lotto</b></div><div class="qr-shell"><div class="qrhere" data-url="${url}"></div></div></div>
+    <div class="receipt-edition"><span>제 1 회</span><b>NO. ${fmt(i+1)}</b></div>
+    <div class="receipt-dates"><div><b>발 행 일</b><span>2026/11/04 (수)</span></div><div><b>추 첨 일</b><span>2026/11/04 (수)</span></div><div><b>지급기한</b><span>2026/11/04 (수)</span></div></div>
+    <div class="receipt-rule"></div>
+    <div class="receipt-numbers"><div class="receipt-number-row"><b class="row-mark">A</b><b class="row-label">자동</b>${T[i].map(n=>`<strong>${fmt(n)}</strong>`).join('')}</div><div class="receipt-number-row"><b class="row-mark">B</b><b class="row-label">수동</b>${Array.from({length:6},()=>'<i class="write-box"></i>').join('')}</div></div>
+    <div class="receipt-rule"></div>
+    <div class="receipt-instructions">QR 스캔 → 이름 및 수동 번호 6개 등록</div>
+    <div class="receipt-barcode" aria-hidden="true"></div>
+    <div class="receipt-foot">CAE LOTTO · 1~20 중 6개 선택 · TICKET ${fmt(i+1)}</div>
+  </article>`;
+ }).join('');
+ if(window.QRCode){document.querySelectorAll('.qrhere').forEach(el=>new QRCode(el,{text:el.dataset.url,width:180,height:180,correctLevel:QRCode.CorrectLevel.M}));}
+ else{msg('adminMsg','QR 생성 라이브러리 로딩 실패. 인터넷 연결을 확인해 주세요.',true);}
+}
 async function loadAdmin(){adminUnsubs.forEach(f=>f());adminUnsubs=[];const c=await getDoc(doc(db,'lotto_admin','config'));config=c.exists()?c.data():null;players={};if(config?.keys){config.keys.forEach((k,i)=>{adminUnsubs.push(onSnapshot(ticketRef(k),s=>{if(s.exists())players[i+1]=s.data();renderAdmin();},e=>msg('adminMsg','티켓 읽기 오류: '+err(e),true)));});renderQr();}renderAdmin();}
 function renderAdmin(){if(!authed)return;const n=Object.values(players).filter(r=>valid(r.manual)&&r.name).length;$('adminTable').innerHTML=`<p><b>${n}/20명 등록</b> · ${main.locked?'입력 마감':'입력 가능'} · ${main.published?'결과 게시됨':'결과 미게시'}</p><table><tr><th>티켓</th><th>이름</th><th>수동 번호</th></tr>${T.map((_,i)=>{const r=players[i+1]||{};return `<tr><td>${fmt(i+1)}</td><td>${esc(r.name||'미등록')}</td><td>${valid(r.manual)?r.manual.map(fmt).join(' '):'미등록'}</td></tr>`;}).join('')}</table>`;}
 async function initialize(){if(config?.keys?.length) return alert('이미 QR이 생성되어 있습니다. 기존 QR을 재사용하세요.');if(!confirm('20개의 새 QR 주소를 생성할까요? 생성 후 QR을 인쇄해야 합니다.'))return;const keys=Array.from({length:20},randomKey),batch=writeBatch(db);keys.forEach((k,i)=>batch.set(ticketRef(k),{number:i+1,name:'',manual:[],ownerUid:''}));batch.set(doc(db,'lotto_admin','config'),{keys,createdAt:new Date().toISOString()});batch.set(mainRef,{locked:false,published:false,draw:[],tieOrder:[]});await batch.commit();msg('adminMsg','20개 QR 생성 완료. 인쇄 버튼을 눌러주세요.');await loadAdmin();}
